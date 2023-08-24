@@ -1,0 +1,143 @@
+@use "../core/button" as button;
+@use "../imports/container" as container;
+@use "../imports/media" as media;
+
+@keyframes rotateAnimationMain {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes rotateAnimationThird {
+  from {
+    transform: rotate(5deg);
+  }
+  to {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes rotateAnimationFourth {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+.loadingPage {
+  background-color: var(--colour-lightBlack);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2000;
+
+  .loadingPageInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 5%;
+
+    h2 {
+      color: var(--colour-beige);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-top: 80px;
+
+      @include media.minWidth(tablet) {
+        font-size: 2.6rem;
+        margin-top: 60px;
+      }
+
+      @include media.minWidth(desktop) {
+        @include media.minHeight(null, 800px) {
+          font-size: 3.2rem;
+        }
+      }
+    }
+
+    .imageWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin-bottom: 50px;
+
+      @include media.minWidth(smallDesktop) {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include media.minWidth(desktop) {
+        @include media.minHeight(null, 800px) {
+          width: 350px;
+          height: 350px;
+          margin-bottom: 70px;
+        }
+      }
+
+      span {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: transparent;
+        top: 0;
+        left: 0;
+
+        &.main {
+          animation: rotateAnimationMain 8s linear infinite;
+          border: 4px solid var(--colour-beige);
+          transform: rotate(45deg);
+          z-index: 10;
+        }
+
+        &.second {
+          border: 4px solid #595959;
+        }
+
+        &.third,
+        &.fourth {
+          border: 4px solid rgba(207, 206, 196, 0.10);
+        }
+
+        &.third {
+          transform: rotate(5deg);
+          animation: rotateAnimationThird 8s linear infinite;
+        }
+
+        &.fourth {
+          transform: rotate(-5deg);
+          animation: rotateAnimationFourth 8s linear infinite;
+        }
+      }
+    }
+
+    svg {
+      width: 220px;
+      height: 50px;
+
+      @include media.minWidth(tablet) {
+        width: 240px;
+        height: 56px;
+      }
+
+      @include media.minWidth(desktop) {
+        @include media.minHeight(null, 800px) {
+          width: 300px;
+          height: 64px;
+        }
+      }
+    }
+  }
+}

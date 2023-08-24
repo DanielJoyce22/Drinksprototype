@@ -1,0 +1,167 @@
+@use "../core/button" as button;
+@use "../core/paragraph" as paragraph;
+@use "../core/inputButton" as inputButton;
+@use "../core/header" as header;
+@use "../imports/container" as container;
+@use "../imports/media" as media;
+@use "../core/pageTransition" as pageTransition;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInAndUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.flavourPage {
+  @include pageTransition.pageTransition;
+  background-color: var(--colour-beige);
+  position: relative;
+  overflow-y: visible;
+  overflow-x: clip;
+  height: 100%;
+
+
+  .container {
+    @include container.container;
+    margin-bottom: 100px;
+    height: calc(100% - 220px);
+    overflow-y: auto;
+    overflow-x: clip;
+    opacity: 0;
+    transform: translateY(60px);
+    animation-name: fadeInAndUp;
+    animation-duration: 0.4s;
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+
+    @include media.minWidth(tablet) {
+      margin-bottom: 140px;
+      height: calc(100% - 260px);
+    }
+
+    @include media.minWidth(smallDesktop) {
+      height: calc(100% - 240px);
+
+      @include media.minHeight(null, 800px) {
+        height: calc(100% - 280px);
+      }
+    }
+  }
+
+  .flavourInner {
+    margin-top: 15px;
+    margin-bottom: 50px;
+
+    @include media.minWidth(tablet) {
+      margin-top: 25px;
+      text-align: center;
+      margin: 25px auto 0;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-top: 35px;
+    }
+  }
+
+  .iconWrapper {
+    margin-bottom: 15px;
+
+    @include media.minWidth(tablet) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  h2 {
+    @include header.h2;
+  }
+
+  p {
+    @include paragraph.preamble;
+  }
+
+  .mainContent {
+    margin-top: 30px;
+
+    @include media.minWidth(tablet) {
+      margin-top: 50px;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-top: 65px;
+    }
+  }
+
+  .tag {
+    text-align: left;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--colour-body);
+    margin-bottom: 8px;
+
+    @include media.minWidth(tablet) {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .itemContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 8px;
+
+    @include media.minWidth(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 12px 20px;
+    }
+
+    @include media.minWidth(smallDesktop) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 16px 32px;
+    }
+
+    @include media.minWidth(mediumDesktop) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  label {
+    @include inputButton.inputButton;
+  }
+
+  .buttonWrapper {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-delay: 1.6s;
+    animation-fill-mode: forwards;
+  }
+
+  button {
+    @include button.button;
+  }
+}

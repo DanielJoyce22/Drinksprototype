@@ -1,0 +1,48 @@
+@use "../imports/media" as media;
+
+@keyframes loadIn {
+  from {
+           transform: translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  }
+  to {
+       transform: translate3d(0px, -100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  }
+}
+
+@mixin pageTransition{
+&:after{
+content: "";
+position: fixed;
+height: 100vh;
+width: 100%;
+background-color: darken(#F6F5E8, 10%);;
+top: 0;
+right: 0;
+opacity: 0;
+visibility: hidden;
+z-index: 20000;
+transform-style: preserve-3d;
+animation-name: loadIn;
+animation-duration: 1s;
+animation-delay: 0s;
+animation-fill-mode: forwards;
+}
+
+&.route-enter-active{
+transition: all 1.2s ease-out;
+
+&:after{
+opacity: 1;
+visibility: visible;
+}
+}
+
+&.route-leave-active{
+transition: all 1.2s ease-in;
+
+&:after{
+opacity: 1;
+visibility: visible;
+}
+}
+}

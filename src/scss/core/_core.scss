@@ -1,0 +1,32 @@
+@use "../imports/media" as media;
+
+html {
+  font-size: 62.5%;
+}
+
+.wrapper{
+  height: 100vh;
+}
+
+body {
+  font-size: 1.5rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  font-weight: normal;
+  word-break: break-word;
+  line-height: 1.5;
+  max-width: 100vw;
+  color: var(--colour-body);
+  font-family: var(--font-body);
+
+  @include media.minWidth(tablet) {
+    font-size: 1.6rem;
+  }
+
+  @include media.minWidth(desktop) {
+    @include media.minHeight(null, 800px) {
+      font-size: 1.8rem;
+    }
+  }
+}

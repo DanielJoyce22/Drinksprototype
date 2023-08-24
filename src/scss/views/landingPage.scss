@@ -1,0 +1,95 @@
+@use "../core/button" as button;
+@use "../imports/container" as container;
+@use "../imports/media" as media;
+@use "../core/pageTransition" as pageTransition;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInAndUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.landingPage {
+  @include pageTransition.pageTransition;
+  background-color: var(--colour-beige);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow-y: visible;
+  overflow-x: clip;
+
+  .container {
+    @include container.container;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(60px);
+     animation-name: fadeInAndUp;
+    animation-duration: 0.4s;
+    animation-delay: 0.8s;
+     animation-fill-mode: forwards;
+
+    @include media.minWidth(tablet) {
+      margin-bottom: 60px;
+    }
+
+    @include media.minWidth(smallDesktop) {
+      margin-bottom: 80px;
+    }
+  }
+
+  svg {
+    width: 220px;
+    height: 80px;
+    margin: 0 auto;
+
+
+    @include media.minWidth(smallTablet) {
+      width: 360px;
+      height: 120px;
+    }
+
+    @include media.minWidth(tablet) {
+      width: 480px;
+      height: 160px;
+    }
+
+    @include media.minWidth(smallDesktop) {
+      width: 600px;
+      height: 200px;
+    }
+
+    @include media.minWidth(desktop) {
+      width: 755px;
+      height: 270px;
+    }
+  }
+
+  .buttonWrapper {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+     animation-name: fadeIn;
+    animation-duration: 0.4s;
+    animation-delay: 1.1s;
+     animation-fill-mode: forwards;
+  }
+
+  button {
+    @include button.button;
+  }
+}

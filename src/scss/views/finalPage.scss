@@ -1,0 +1,373 @@
+@use "../core/button" as button;
+@use "../core/paragraph" as paragraph;
+@use "../core/inputButton" as inputButton;
+@use "../core/header" as header;
+@use "../imports/container" as container;
+@use "../imports/media" as media;
+@use "../core/pageTransition" as pageTransition;
+
+@keyframes fadeInAndUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.finalPage {
+  @include pageTransition.pageTransition;
+  background-color: var(--colour-beige);
+  position: relative;
+  overflow-y: visible;
+  overflow-x: clip;
+
+  .container {
+    @include container.container;
+    margin-bottom: 60px;
+    max-width: 1200px !important;
+
+    @include media.minWidth(tablet) {
+      margin-bottom: 90px;
+    }
+
+    @include media.minWidth(smallDesktop) {
+      margin-bottom: 120px;
+    }
+  }
+
+  .finalPageInner {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(60px);
+    animation-name: fadeInAndUp;
+    animation-duration: 0.4s;
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+
+    @include media.minWidth(tablet) {
+      margin: 25px auto 0;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-top: 35px;
+    }
+  }
+
+  .topWrapper {
+    @include media.minWidth(tablet) {
+      text-align: center;
+    }
+  }
+
+  .iconWrapper {
+    margin-bottom: 15px;
+
+    @include media.minWidth(tablet) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  h2 {
+    @include header.h2;
+  }
+
+  .intro {
+    @include paragraph.preamble;
+  }
+
+  .contentWrapper {
+    margin-top: 35px;
+
+    @include media.minWidth(tablet) {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 60px;
+    }
+
+    @include media.minWidth(smallDesktop) {
+      grid-gap: 100px;
+    }
+
+    @include media.minWidth(desktop) {
+      grid-gap: 140px;
+    }
+  }
+
+  .imageWrapper {
+    &.mobile {
+      display: block;
+      margin-bottom: 32px;
+
+      @include media.minWidth(tablet) {
+        display: none;
+      }
+    }
+
+    &.desktop {
+      display: none;
+
+      @include media.minWidth(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  .ingredients {
+    h3 {
+      font-size: 1.8rem;
+      color: var(--colour-body);
+      font-weight: 700;
+      font-family: var(--font-body);
+      line-height: 1.4;
+      padding-bottom: 7px;
+      margin: 0;
+      border-bottom: 2px solid var(--colour-body);
+
+      @include media.minWidth(tablet) {
+        font-size: 2.4rem;
+        padding-bottom: 12px;
+      }
+
+      @include media.minWidth(desktop) {
+        @include media.minHeight(null, 800px) {
+          font-size: 3.2rem;
+          padding-bottom: 17px;
+        }
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        font-family: var(--font-body);
+        color: var(--colour-black);
+        font-weight: 400;
+
+        @include media.minWidth(smallDesktop) {
+          margin-top: 25px;
+          font-size: 1.4rem;
+        }
+
+        &:first-of-type {
+          margin-top: 27px;
+
+          @include media.minWidth(smallDesktop) {
+            margin-top: 32px;
+          }
+        }
+
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .recipes {
+    margin-top: 40px;
+
+    @include media.minWidth(tablet) {
+      margin-top: 50px;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-top: 60px;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      color: var(--colour-body);
+      font-weight: 700;
+      font-family: var(--font-body);
+      line-height: 1.4;
+      padding-bottom: 7px;
+      margin: 0;
+      border-bottom: 2px solid var(--colour-body);
+
+      @include media.minWidth(tablet) {
+        font-size: 2.4rem;
+        padding-bottom: 12px;
+      }
+
+      @include media.minWidth(desktop) {
+        @include media.minHeight(null, 800px) {
+          font-size: 3.2rem;
+          padding-bottom: 17px;
+        }
+      }
+    }
+
+    ol {
+      margin: 18px 0 0;
+      padding: 0;
+
+      @include media.minWidth(tablet) {
+        margin-top: 13px;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding-bottom: 25px;
+
+        @include media.minWidth(tablet) {
+          padding: 15px 0;
+          border-bottom: 1px solid var(--colour-beigeBorder);
+        }
+
+        &:last-of-type {
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+
+        img {
+          margin-right: 17px;
+          min-width: 45px;
+        }
+
+        p {
+          color: var(--colour-black);
+          font-family: var(--font-body);
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 1.4;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .servingWrapper {
+    margin-top: 45px;
+
+    h4 {
+      margin: 0 0 13px;
+      font-size: 1.6rem;
+      color: var(--colour-body);
+      font-weight: 700;
+      font-family: var(--font-body);
+      line-height: 1.4;
+
+      @include media.minWidth(tablet) {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--colour-black);
+      font-weight: 400;
+      font-family: var(--font-body);
+      line-height: 1.4;
+
+      + p {
+        margin-top: 17px;
+
+        @include media.minWidth(tablet) {
+          margin-top: 23px;
+        }
+      }
+    }
+  }
+
+  .shareWrapper {
+    margin-top: 40px;
+
+    @include media.minWidth(tablet) {
+      margin-top: 50px;
+    }
+
+    @include media.minWidth(desktop) {
+      margin-top: 60px;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--colour-body);
+      font-weight: 700;
+      font-family: var(--font-body);
+      line-height: 1.4;
+      border-bottom: 2px solid var(--colour-body);
+      padding-bottom: 5px;
+
+      @include media.minWidth(tablet) {
+        padding-bottom: 10px;
+      }
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 15px 0 -10px;
+
+      li {
+        a {
+          color: var(--colour-black);
+          font-size: 1.4rem;
+          font-family: var(--font-body);
+          font-weight: 400;
+          margin: 0 16px 10px 0;
+          text-decoration: underline;
+          transition: text-decoration-color 0.2s ease;
+          text-decoration-color: transparent;
+
+          @include media.minWidth(tablet) {
+            margin-right: 24px;
+          }
+
+          @include media.minWidth(desktop) {
+            margin-right: 32px;
+          }
+
+          &:focus-visible {
+            outline: 1px solid inherit;
+          }
+
+          &:hover {
+            text-decoration-color: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .buttonsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    button {
+      @include button.button;
+      width: auto !important;
+      border-right: 1px solid var(--colour-white) !important;
+
+      @include media.maxWidth(tablet) {
+        min-height: 90px !important;
+      }
+
+      &:nth-of-type(2) {
+        border-right: none !important;
+      }
+    }
+
+     a{
+       button{
+        width: 100% !important;
+      }
+    }
+  }
+}

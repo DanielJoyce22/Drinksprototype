@@ -1,0 +1,41 @@
+@use "../core/button" as button;
+@use "../imports/container" as container;
+@use "../imports/media" as media;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.iconBanner {
+  background-color: var(--colour-lightBlack);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+
+
+  @include media.minWidth(tablet) {
+    height: 80px;
+  }
+
+  svg {
+    width: 130px;
+    height: 30px;
+
+    @include media.minWidth(tablet) {
+      width: 140px;
+      height: 40px;
+    }
+  }
+}

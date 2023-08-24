@@ -1,0 +1,16 @@
+@use "media" as media;
+
+@mixin container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5%;
+  box-sizing: content-box;
+
+  &.small {
+    max-width: 1090px;
+  }
+
+  @include media.minWidth(tablet) {
+    padding: 0 8%;
+  }
+}
