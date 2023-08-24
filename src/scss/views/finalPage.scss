@@ -46,7 +46,7 @@
     transform: translateY(60px);
     animation-name: fadeInAndUp;
     animation-duration: 0.4s;
-    animation-delay: 1.3s;
+    animation-delay: 1.5s;
     animation-fill-mode: forwards;
 
     @include media.minWidth(tablet) {

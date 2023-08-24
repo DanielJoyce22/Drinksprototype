@@ -23,13 +23,13 @@ visibility: hidden;
 z-index: 20000;
 transform-style: preserve-3d;
 animation-name: loadIn;
-animation-duration: 1s;
+animation-duration: 1.2s;
 animation-delay: 0s;
 animation-fill-mode: forwards;
 }
 
 &.route-enter-active{
-transition: all 1.2s ease-out;
+transition: all 1.4s ease-out;
 
 &:after{
 opacity: 1;
@@ -38,7 +38,7 @@ visibility: visible;
 }
 
 &.route-leave-active{
-transition: all 1.2s ease-in;
+transition: all 0s ease-in;
 
 &:after{
 opacity: 1;
