@@ -54,11 +54,7 @@
     }
 
     @include media.minWidth(smallDesktop) {
-      height: calc(100% - 240px);
-
-      @include media.minHeight(null, 800px) {
         height: calc(100% - 280px);
-      }
     }
   }
 

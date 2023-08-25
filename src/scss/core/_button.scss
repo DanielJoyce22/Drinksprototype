@@ -21,14 +21,13 @@
     min-height: 122px;
 
     @include media.minWidth(tablet) {
+
       @include media.minHeight(null, 800px) {
         min-height: 140px;
       }
     }
 
     @include media.minWidth(desktop) {
-      min-height: 140px;
-      padding: 40px;
 
       @include media.minHeight(null, 800px) {
         min-height: 155px;
